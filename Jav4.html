@@ -1,150 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <script>(function(s){s.dataset.zone='10453001',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
-  <script>(function(s){s.dataset.zone='10453099',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <!-- Ads -->
+  <script>
+    (function(s){
+      s.dataset.zone='10453001';
+      s.src='https://nap5k.com/tag.min.js';
+    })([document.documentElement, document.body].filter(Boolean).pop()
+      .appendChild(document.createElement('script')));
+  </script>
+
+  <script>
+    (function(s){
+      s.dataset.zone='10453099';
+      s.src='https://nap5k.com/tag.min.js';
+    })([document.documentElement, document.body].filter(Boolean).pop()
+      .appendChild(document.createElement('script')));
+  </script>
+
   <meta charset="UTF-8">
-<title>Redirecting...</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<style>
-  /* === Body Styling with Background Image === */
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4') no-repeat center center fixed;
-    background-size: cover;
-    padding: 40px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-  }
+  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  /* Dark overlay for better text visibility */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6); /* Dark overlay */
-    z-index: 0;
-  }
-
-  /* Main content container */
-  .content-wrapper {
-    position: relative;
-    z-index: 1;
-    margin-top: 100px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px 20px;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-    max-width: 450px;
-    width: 100%;
-  }
-
-  h1 {
-    color: #222;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    color: #555;
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-
-  /* Red Button */
-  button {
-    background: #e53935; /* Red */
-    color: #fff;
-    border: none;
-    padding: 15px 25px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  button:hover {
-    background: #c62828;
-    transform: translateY(-2px);
-  }
-
-  /* Instructions Box */
-  .instructions {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #666;
-    text-align: left;
-    display: inline-block;
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-</style>
-
-<script>
-  let t = "https://jav.boldilocks.xyz/jav4";
-
-  function m() {
-    let u = navigator.userAgent;
-    return u.includes("FBAN") || u.includes("FBAV");
-  }
-
-  function a() {
-    return /Android/i.test(navigator.userAgent);
-  }
-
-  function i() {
-    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
-
-  function go() {
-    history.replaceState({}, '', location.origin + location.pathname);
-    if (a()) {
-      // Android intent for Chrome
-      location.href = "intent://jav.boldilocks.xyz/jav4/#Intent;scheme=https;package=com.android.chrome;end";
-      setTimeout(() => location.href = t, 1200);
-    } else {
-      location.href = t;
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      text-align: center;
     }
-  }
 
-  window.onload = function() {
-    if (m()) {
-      if (a()) {
-        go();
-      } else if (i()) {
-        document.getElementById("inst").style.display = "block";
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 0;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+      margin-top: 100px;
+      background: rgba(255,255,255,.95);
+      padding: 30px 20px;
+      border-radius: 14px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 6px 18px rgba(0,0,0,.25);
+    }
+
+    button {
+      background: #e53935;
+      color: #fff;
+      border: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .instructions {
+      display: none;
+      margin-top: 20px;
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+    }
+  </style>
+
+  <script>
+    const TARGET = "https://jav.boldilocks.xyz/jav4";
+
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function isFB() {
+      return /FBAN|FBAV/i.test(navigator.userAgent);
+    }
+
+    function go() {
+      if (isAndroid()) {
+        const intent =
+          "intent://jav.boldilocks.xyz/jav4#Intent;" +
+          "scheme=https;" +
+          "package=com.android.chrome;" +
+          "S.browser_fallback_url=" + encodeURIComponent(TARGET) + ";" +
+          "end";
+
+        location.href = intent;
+
+        setTimeout(() => {
+          location.href = TARGET;
+        }, 1500);
+
+      } else {
+        location.href = TARGET;
       }
     }
-  }
-</script>
+
+    window.onload = function () {
+      if (isFB() && isIOS()) {
+        document.getElementById("inst").style.display = "block";
+      }
+    };
+  </script>
+
 </head>
 <body>
+
   <div class="content-wrapper">
-    <h1>Redirecting...</h1>
+    <h2>Redirecting...</h2>
     <p>If nothing happens, tap below:</p>
+
     <button onclick="go()">Watch Here</button>
 
-    <!-- Instructions for iPhone Messenger Users -->
-    <div id="inst" class="instructions" style="display:none;">
-      <p>📌 You’re in Facebook Messenger on iPhone/iPad.</p>
-      <p>Messenger won’t auto-open Safari. Please:</p>
+    <div id="inst" class="instructions">
+      <p>📌 Facebook / Messenger detected (iPhone)</p>
       <ol>
-        <li>Tap the <b>•••</b> menu in the top right.</li>
-        <li>Select <b>Open in Browser</b>.</li>
+        <li>Tap <b>•••</b></li>
+        <li>Select <b>Open in Browser</b></li>
       </ol>
     </div>
   </div>
+
 </body>
 </html>
