@@ -2,147 +2,342 @@
 <html>
 <head>
   <meta name="monetag" content="132f50ca46ddd9eacf8a6b3a6b680338">
-<meta charset="UTF-8">
-<title>Click below button..</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<style>
-  /* === Body Styling with Background Image === */
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4') no-repeat center center fixed;
-    background-size: cover;
-    padding: 40px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-  }
+  <meta charset="UTF-8">
+  <title>FREE MOVIES • Boldilocks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  /* Dark overlay for better text visibility */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6); /* Dark overlay */
-    z-index: 0;
-  }
-
-  /* Main content container */
-  .content-wrapper {
-    position: relative;
-    z-index: 1;
-    margin-top: 100px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px 20px;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-    max-width: 450px;
-    width: 100%;
-  }
-
-  h1 {
-    color: #222;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    color: #555;
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-
-  /* Red Button */
-  button {
-    background: #e53935; /* Red */
-    color: #fff;
-    border: none;
-    padding: 15px 25px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  button:hover {
-    background: #c62828;
-    transform: translateY(-2px);
-  }
-
-  /* Instructions Box */
-  .instructions {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #666;
-    text-align: left;
-    display: inline-block;
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-</style>
-
-<script>
-  let t = "https://www.boldilocks.xyz/";
-
-  function m() {
-    let u = navigator.userAgent;
-    return u.includes("FBAN") || u.includes("FBAV");
-  }
-
-  function a() {
-    return /Android/i.test(navigator.userAgent);
-  }
-
-  function i() {
-    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
-
-  function go() {
-    history.replaceState({}, '', location.origin + location.pathname);
-    if (a()) {
-      // Android intent for Chrome
-      location.href = "intent://www.boldilocks.xyz/#Intent;scheme=https;package=com.android.chrome;end";
-      setTimeout(() => location.href = t, 1200);
-    } else {
-      location.href = t;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
 
-  window.onload = function() {
-    if (m()) {
-      if (a()) {
-        go();
-      } else if (i()) {
-        document.getElementById("inst").style.display = "block";
-      }
+    /* ===== VIBRANT, EYE‑CATCHING BACKGROUND ===== */
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      
+      /* energetic purple‑pink‑orange gradient */
+      background: linear-gradient(135deg, #f857a6 0%, #ff5858 40%, #f09819 100%);
+      background-size: 250% 250%;
+      animation: energyFlow 10s ease infinite;
     }
-  }
-</script>
+
+    @keyframes energyFlow {
+      0% { background-position: 0% 0%; }
+      25% { background-position: 50% 50%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 50% 50%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* extra glow overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== CARD – BRIGHT & PLAYFUL ===== */
+    .card {
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 248, 240, 0.9);   /* warm off‑white */
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 48px 48px 48px 48px;
+      padding: 40px 30px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 30px 50px rgba(255, 75, 75, 0.4), 0 0 0 2px rgba(255,215,0,0.5) inset;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid rgba(255, 230, 0, 0.6);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 45px 70px rgba(255, 88, 88, 0.6), 0 0 0 3px gold inset;
+    }
+
+    /* ===== ICON WITH RADIANT HALO ===== */
+    .brand-icon {
+      font-size: 56px;
+      color: #d94f4f;
+      background: linear-gradient(145deg, #ffee00, #ffb347);
+      width: 110px;
+      height: 110px;
+      line-height: 110px;
+      text-align: center;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 25px rgba(255, 200, 0, 0.7), 0 0 0 4px white;
+      border: 2px solid #ff6a00;
+    }
+
+    .brand-icon i {
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+    }
+
+    /* ===== HEADLINES – HIGH IMPACT ===== */
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #d43f3f, #ff7e05, #e74c3c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(255, 160, 0, 0.4);
+    }
+
+    .subhead {
+      color: #b64926;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      background: rgba(255, 215, 0, 0.25);
+      padding: 8px 20px;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid #ffb82e;
+      box-shadow: 0 4px 0 #bd6b1e;
+    }
+
+    /* ===== SUPER EYE‑CATCHY BUTTON (ORANGE · PINK · YELLOW) ===== */
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: linear-gradient(145deg, #ff9800, #ff5722, #e91e63);
+      color: white;
+      border: none;
+      padding: 22px 40px;
+      font-size: 1.8rem;
+      font-weight: 800;
+      border-radius: 60px;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 20px 30px -5px #ff2f00, 0 0 0 3px #fcee8f inset, 0 0 15px #ffd700;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin: 15px 0 20px;
+      text-shadow: 2px 2px 0 #b64500;
+    }
+
+    .primary-btn i {
+      font-size: 2.2rem;
+      filter: drop-shadow(0 2px 2px black);
+      transition: transform 0.25s;
+    }
+
+    .primary-btn:hover {
+      background: linear-gradient(145deg, #ffb341, #ff6a4b, #ff3d7f);
+      box-shadow: 0 25px 40px -3px #ff4500, 0 0 0 4px #fff3a0 inset;
+      transform: scale(1.05);
+    }
+
+    .primary-btn:hover i {
+      transform: translateX(8px) rotate(5deg);
+    }
+
+    .primary-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 10px 15px #c53b00;
+    }
+
+    /* ===== HINT BADGE ===== */
+    .hint-text {
+      color: #a13e0b;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ffdb9d;
+      padding: 10px 18px;
+      border-radius: 50px;
+      width: fit-content;
+      margin: 0 auto 15px;
+      border: 1px solid #ff984f;
+      box-shadow: 0 6px 0 #b45f2a;
+    }
+
+    .hint-text i {
+      color: #d64000;
+      font-size: 1.2rem;
+    }
+
+    /* ===== INSTRUCTION CARD – STILL CLEAN BUT WITH WARM VIBES ===== */
+    .instructions-card {
+      background: rgba(255, 235, 200, 0.9);
+      backdrop-filter: blur(6px);
+      border-radius: 28px;
+      padding: 22px;
+      margin-top: 25px;
+      text-align: left;
+      border: 2px solid #f4a261;
+      box-shadow: 0 15px 20px -8px #a84b1d;
+    }
+
+    .instructions-card p {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #9d3c0b;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+
+    .instructions-card i {
+      color: #ff6f42;
+      font-size: 1.6rem;
+    }
+
+    .instructions-card ol {
+      margin-left: 28px;
+      color: #73390d;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    .instructions-card li {
+      margin-bottom: 8px;
+    }
+
+    .instructions-card b {
+      background: #e07c2c;
+      color: white;
+      padding: 3px 14px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+
+    /* responsive */
+    @media (max-width: 480px) {
+      .card { padding: 30px 18px; }
+      h1 { font-size: 2rem; }
+      .primary-btn { font-size: 1.5rem; padding: 18px 24px; }
+      .brand-icon { width: 90px; height: 90px; line-height: 90px; font-size: 44px; }
+      .subhead { font-size: 1.1rem; }
+    }
+    @media (max-width: 360px) {
+      h1 { font-size: 1.7rem; }
+      .primary-btn { font-size: 1.3rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="content-wrapper">
-    <h1>Redirecting...</h1>
-    <p>If nothing happens, tap below:</p>
-    <button onclick="go()">FREE JAV & VIVAMAX MOVIES</button>
 
-    <!-- Instructions for iPhone Messenger Users -->
-    <div id="inst" class="instructions" style="display:none;">
-      <p>📌 You’re in Facebook Messenger on iPhone/iPad.</p>
-      <p>Messenger won’t auto-open Safari. Please:</p>
+  <div class="card">
+    <!-- eye-catching icon -->
+    <div class="brand-icon">
+      <i class="fas fa-bolt"></i>   <!-- lightning = energy -->
+    </div>
+
+    <h1>FREE MOVIES WATCH</h1>
+    <p class="subhead">JAV • Vivamax</p>
+
+    <!-- super vibrant button -->
+    <button class="primary-btn" onclick="go()" id="mainCta">
+      <span>ACCESS NOW</span>
+      <i class="fas fa-fire"></i>   <!-- fire = hot content -->
+    </button>
+
+    <!-- small hint -->
+    <div class="hint-text">
+      <i class="fas fa-crown"></i>
+      <span>Instant redirect • 100% free</span>
+    </div>
+
+    <!-- instruction block (only when needed) -->
+    <div id="inst" class="instructions-card" style="display: none;">
+      <p>
+        <i class="fab fa-facebook-messenger"></i>
+        <span><strong>Messenger detected</strong> (iOS)</span>
+      </p>
       <ol>
-        <li>Tap the <b>•••</b> menu in the top right.</li>
-        <li>Select <b>Open in Browser</b>.</li>
+        <li>Tap the <b>•••</b> menu (top right)</li>
+        <li>Choose <b>Open in Browser</b></li>
+        <li>Then tap the button again</li>
       </ol>
+      <p style="margin-top:10px; font-size:0.9rem; opacity:0.8;">
+        <i class="fas fa-info-circle"></i> Messenger restricts automatic redirection.
+      </p>
     </div>
   </div>
+
+  <script>
+    // === DESTINATION URL ===
+    const targetUrl = "https://www.boldilocks.xyz/";
+
+    function isFBApp() {
+      let ua = navigator.userAgent;
+      return ua.includes("FBAN") || ua.includes("FBAV");
+    }
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent);
+    }
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    // === MAIN REDIRECT ===
+    function go() {
+      history.replaceState({}, '', location.origin + location.pathname);
+
+      if (isAndroid()) {
+        try {
+          location.href = "intent://www.boldilocks.xyz/#Intent;scheme=https;package=com.android.chrome;end";
+          setTimeout(() => { location.href = targetUrl; }, 1500);
+        } catch (e) {
+          location.href = targetUrl;
+        }
+      } else {
+        location.href = targetUrl;
+      }
+    }
+
+    // show messenger hint for iOS + FB
+    window.addEventListener('load', function() {
+      if (isFBApp() && isIOS()) {
+        document.getElementById('inst').style.display = 'block';
+      } else {
+        document.getElementById('inst').style.display = 'none';
+      }
+    });
+
+    // keyboard accessibility
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const btn = document.getElementById('mainCta');
+        if (document.activeElement === btn || e.target === btn) {
+          e.preventDefault();
+          go();
+        }
+      }
+    });
+  </script>
+  <meta name="format-detection" content="telephone=no">
 </body>
 </html>
