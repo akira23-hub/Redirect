@@ -5,7 +5,7 @@
 
 
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
+  <title>Watch Video...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -64,7 +64,7 @@
   </style>
 
   <script>
-    const TARGET = "https://play.boldilocks.xyz/init";
+    const TARGET = "https://www.boldilocks.xyz/#video/26";
 
     function isAndroid() {
       return /Android/i.test(navigator.userAgent);
@@ -81,7 +81,7 @@
     function go() {
       if (isAndroid()) {
         const intent =
-          "intent://play.boldilocks.xyz/init#Intent;" +
+          "intent://www.boldilocks.xyz/#video/26#Intent;" +
           "scheme=https;" +
           "package=com.android.chrome;" +
           "S.browser_fallback_url=" + encodeURIComponent(TARGET) + ";" +
