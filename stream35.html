@@ -63,47 +63,31 @@
     }
   </style>
 
-  <script>
+ function go() {
+  if (isAndroid()) {
+    // We define the target link
     const TARGET = "https://www.boldilocks.xyz/#video/35";
+    
+    // We remove 'https://' for the intent path
+    const cleanPath = "www.boldilocks.xyz/#video/35";
 
-    function isAndroid() {
-      return /Android/i.test(navigator.userAgent);
-    }
+    const intent = 
+      "intent://" + cleanPath + 
+      "#Intent;" + 
+      "scheme=https;" + 
+      "package=com.android.chrome;" + 
+      "S.browser_fallback_url=" + encodeURIComponent(TARGET) + ";" + 
+      "end";
 
-    function isIOS() {
-      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
+    location.href = intent;
 
-    function isFB() {
-      return /FBAN|FBAV/i.test(navigator.userAgent);
-    }
-
-    function go() {
-      if (isAndroid()) {
-        const intent =
-          "intent://www.boldilocks.xyz/#video/35#Intent;" +
-          "scheme=https;" +
-          "package=com.android.chrome;" +
-          "S.browser_fallback_url=" + encodeURIComponent(TARGET) + ";" +
-          "end";
-
-        location.href = intent;
-
-        setTimeout(() => {
-          location.href = TARGET;
-        }, 1500);
-
-      } else {
-        location.href = TARGET;
-      }
-    }
-
-    window.onload = function () {
-      if (isFB() && isIOS()) {
-        document.getElementById("inst").style.display = "block";
-      }
-    };
-  </script>
+    setTimeout(() => {
+      location.href = TARGET;
+    }, 1500);
+  } else {
+    location.href = "https://www.boldilocks.xyz/#video/35";
+  }
+}
 
 </head>
 <body>
