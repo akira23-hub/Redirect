@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Watch Video</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.96);
+      max-width: 460px;
+      width: 100%;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1e2a3e;
+      margin-bottom: 0.5rem;
+    }
+
+    .sub {
+      color: #2c3e50;
+      margin-bottom: 1.8rem;
+      font-size: 1rem;
+    }
+
+    .watch-btn {
+      background: #e53935;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.3rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 60px;
+      width: 100%;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(229, 57, 53, 0.3);
+      transition: 0.2s;
+    }
+
+    .watch-btn:active {
+      transform: scale(0.97);
+      background: #c62828;
+    }
+
+    .info-message {
+      margin-top: 1.6rem;
+      font-size: 0.85rem;
+      color: #2c3e50;
+      background: #f1f5f9;
+      padding: 0.7rem;
+      border-radius: 2rem;
+      display: inline-block;
+    }
+
+    .instructions {
+      background: #fef9e6;
+      border-left: 5px solid #f39c12;
+      margin-top: 1.8rem;
+      padding: 1rem 1.2rem;
+      border-radius: 1.2rem;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #3b2e1e;
+      display: none;
+    }
+
+    .instructions p {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .instructions ol {
+      padding-left: 1.3rem;
+      margin-top: 0.2rem;
+    }
+
+    .instructions li {
+      margin: 0.4rem 0;
+    }
+  </style>
+
+  <script>
+    const TARGET_URL = "https://www.boldilocks.xyz/#video/26";
+
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function isTelegramWebView() {
+      const ua = navigator.userAgent;
+      return /Telegram/i.test(ua) || (window.TelegramWebviewProxy !== undefined) || (/\bTGWebView\b/.test(ua));
+    }
+
+    function isFacebookApp() {
+      return /FBAN|FBAV|FBIOS|FBBK/i.test(navigator.userAgent);
+    }
+
+    function openExternalBrowser() {
+      const url = TARGET_URL;
+
+      if (isAndroid()) {
+        const intent = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(url)};end`;
+        window.location.href = intent;
+        
+        setTimeout(() => {
+          window.location.href = url;
+        }, 1200);
+      } 
+      else {
+        window.location.href = url;
+      }
+    }
+
+    window.manualRedirect = function() {
+      openExternalBrowser();
+    };
+
+    window.onload = function() {
+      if ((isFacebookApp() || isTelegramWebView()) && isIOS()) {
+        const inst = document.getElementById("instructionBox");
+        if (inst) inst.style.display = "block";
+      }
+    };
+  </script>
+</head>
+<body>
+
+<div class="card">
+  <h2>▶️ Watch video</h2>
+  <div class="sub">tap the button to open</div>
+  
+  <button class="watch-btn" onclick="manualRedirect()">
+    ✨ Open in browser ✨
+  </button>
+  
+  <div class="info-message">
+    🔒 Click above to watch
+  </div>
+  
+  <div id="instructionBox" class="instructions">
+    <p>📱 Open in external browser (required)</p>
+    <ol>
+      <li>Tap <b>•••</b> (or menu)</li>
+      <li>Select <b>Open in Browser</b> / <b>Open in Chrome</b></li>
+    </ol>
+  </div>
+</div>
+
+</body>
+</html>
